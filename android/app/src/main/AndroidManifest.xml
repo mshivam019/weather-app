@@ -1,15 +1,11 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.weatherapp">
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-   <application
-        android:label="weatherapp"
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <application
+        android:label="Weather App"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher"
-        android:usesCleartextTraffic="true">
+        android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
             android:exported="true"
