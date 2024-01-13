@@ -77,15 +77,46 @@ class _WeatherPageState extends State<WeatherPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Center(
-            child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text(_weather?.cityName ?? "Loading city"),
-        Lottie.asset(getWeatherAnimation(_weather?.mainCondition)),
-        Text('${_weather?.temperature.round()} °C'),
-        Text(_weather?.mainCondition ?? "")
-      ],
-    )));
+      body: Center(
+        child: Padding(
+          padding:
+              const EdgeInsets.only(top: 20.0), // Adjust the value as needed
+          child: ListView.separated(
+            itemBuilder: (context, index) {
+              if (index == 0) {
+                return const Icon(
+                  Icons.location_on,
+                  size: 40.0, // Adjust the size of the icon as needed
+                );
+              }
+              if (index == 1) {
+                return Text(
+                  _weather?.cityName ?? "Loading city",
+                  style: const TextStyle(
+                      fontSize: 28, fontWeight: FontWeight.w300),
+                  textAlign: TextAlign.center,
+                );
+              } else if (index == 2) {
+                return Lottie.asset(
+                    getWeatherAnimation(_weather?.mainCondition));
+              } else {
+                return Text(
+                  '${_weather?.temperature.round()}°',
+                  style: const TextStyle(
+                      fontSize: 40, fontWeight: FontWeight.w400),
+                  textAlign: TextAlign.center,
+                );
+              }
+            },
+            separatorBuilder: (context, index) {
+              return const SizedBox(height: 16.0); // Adjust the value as needed
+            },
+            itemCount: 4, // Adjust the value based on the number of widgets
+            physics:
+                const BouncingScrollPhysics(), // Optional: Customize scroll physics
+          ),
+        ),
+      ),
+    );
   }
 }
